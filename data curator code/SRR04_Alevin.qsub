@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#$ -P bf528
+#$ -cwd
+#$ -pe omp 16
+
+source /etc/bashrc
+
+module load salmon
+
+salmon alevin -l ISR -1 /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879604_1_bc.fastq.gz -2 /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879604_2.fastq.gz --end 5 --barcodeLength 19 --umiLength 6 -i /projectnb2/bf528/users/group2/project4/data_curator/fastq/gencode_v33_idx/ -p 16 -o /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR04_output --tgMap /projectnb2/bf528/users/group2/project4/data_curator/fastq/tx2gene.tsv --whitelist /projectnb2/bf528/users/group2/project4/data_curator/fastq/BC04_whitelist.tsv --dumpMtx

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#$ -P bf528
+#$ -cwd
+#$ -pe omp 16
+
+source /etc/bashrc
+
+module load salmon
+
+salmon index -t /projectnb2/bf528/users/group2/project4/data_curator/fastq/gencode.v33.transcripts.fa.gz --gencode -i /projectnb2/bf528/users/group2/project4/data_curator/fastq/gencode_v33_idx

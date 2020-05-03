@@ -1,0 +1,18 @@
+#!/usr/bin/awk -f 
+
+#$ -cwd
+#$ -P bf528 
+#$ -j y
+#$ -pe mpi_16_tasks_per_node 16
+#$ -l h_rt=48:00:00
+
+source /etc/bashrc
+
+gzip -dc /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879604_1_bc.fastq.gz | awk '{if(NR%4==2){print substr($1,1,19) "\t" substr($1,20,6) "\t" $1 }}' | head -1000 | cut -f 1 | sort | uniq -c | awk '{print $1}' | sort | uniq -c | awk '{print $2 "\t" $1}' | awk '{sum=sum+$2; print $0 "\t" sum}' > SRR3879604_1_bc_dist.txt
+gzip -dc /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879604_1_bc.fastq.gz | awk '{if(NR%4==2){print substr($1,1,19) "\t" substr($1,20,6) "\t" $1 }}' | head -1000 | cut -f 1 | sort | uniq -c | awk '{print $2 "\t" $1}' > SRR3879604_1_bc_BClist.txt
+
+gzip -dc /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879605_1_bc.fastq.gz | awk '{if(NR%4==2){print substr($1,1,19) "\t" substr($1,20,6) "\t" $1 }}' | head -1000 | cut -f 1 | sort | uniq -c | awk '{print $1}' | sort | uniq -c | awk '{print $2 "\t" $1}' | awk '{sum=sum+$2; print $0 "\t" sum}' > SRR3879605_1_bc_dist.txt
+gzip -dc /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879605_1_bc.fastq.gz | awk '{if(NR%4==2){print substr($1,1,19) "\t" substr($1,20,6) "\t" $1 }}' | head -1000 | cut -f 1 | sort | uniq -c | awk '{print $2 "\t" $1}' > SRR3879605_1_bc_BClist.txt
+
+gzip -dc /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879606_1_bc.fastq.gz | awk '{if(NR%4==2){print substr($1,1,19) "\t" substr($1,20,6) "\t" $1 }}' | head -1000 | cut -f 1 | sort | uniq -c | awk '{print $1}' | sort | uniq -c | awk '{print $2 "\t" $1}' | awk '{sum=sum+$2; print $0 "\t" sum}' > SRR3879606_1_bc_dist.txt
+gzip -dc /projectnb2/bf528/users/group2/project4/data_curator/fastq/SRR3879606_1_bc.fastq.gz | awk '{if(NR%4==2){print substr($1,1,19) "\t" substr($1,20,6) "\t" $1 }}' | head -1000 | cut -f 1 | sort | uniq -c | awk '{print $2 "\t" $1}' > SRR3879606_1_bc_BClist.txt
